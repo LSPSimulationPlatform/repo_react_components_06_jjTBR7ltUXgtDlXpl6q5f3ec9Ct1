@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { ConfigProvider } from 'antd';
+import 'antd/dist/reset.css'; // Import Ant Design styles
+import CrudExample from './pages/CrudExample.tsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    
+    <ConfigProvider
+      theme={{
+        token: {colorPrimary: '#1890ff', borderRadius: 6,},}}>
+      
+      <div style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+      <header style={{ 
+          background: '#fff', 
+          padding: '16px 24px', 
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          marginBottom: '24px'
+        }}>
+          <h1 style={{ margin: 0, color: '#1890ff' }}>
+            React + TypeScript + Ant Design Component Library
+          </h1>
+          <p style={{ margin: '8px 0 0 0', color: '#666' }}>
+            Demonstrating reusable components, proper TypeScript usage, and CRUD operations
+          </p>
+        </header>
+        
+        <main>
+          <CrudExample />
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </ConfigProvider>
+  );
+};
 
-export default App
+
+export default App;
