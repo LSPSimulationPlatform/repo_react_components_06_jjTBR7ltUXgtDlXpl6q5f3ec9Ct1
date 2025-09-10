@@ -6,7 +6,8 @@ import SelectBox from './SelectBox.tsx' // - Custom SelectBox component for drop
 import TextArea from './TextArea.tsx' // - Custom TextArea component for multi-line text input with character counting
 
 export default function CreateUpdateCrudExample({
-  formData, // - Object containing current form field values (name, category, description)
+  formData, 
+  countryOptions,// - Object containing current form field values (name, category, description)
   categoryOptions, // - Array of dropdown options for category selection
   handleInputChange, // - Curried function for handling text input and textarea changes
   handleSelectChange, // - Function for handling dropdown selection changes
@@ -45,14 +46,36 @@ export default function CreateUpdateCrudExample({
         required // - Mark field as required with red asterisk indicator
       />  
 
+      <Input 
+      label="Surname"
+      placeholder="Enter a Surname"
+      handleInputChange={handleInputChange("surname")}
+      required
+      value={formData.surname}/>
+
+      <Input 
+      placeholder="Enter a Email"
+      label="Email"
+      handleInputChange={handleInputChange("email")}
+      value={formData.email}
+      required/>
+
       <SelectBox
         label="Category" // - Field label for dropdown selection
         options={categoryOptions} // - Array of selectable category options
         value={formData.category} // - Currently selected category value
-        handleSelectChange={handleSelectChange} // - Handler for category selection changes
+        handleSelectChange={handleSelectChange("category")} // - Handler for category selection changes
         placeholder="Select a category" // - Hint text when no option is selected
         required // - Mark field as required with red asterisk indicator
       />  
+
+      <SelectBox 
+      placeholder="Select a country"
+      label="Country"
+      required
+      handleSelectChange={handleSelectChange("country")}
+      value={formData.country}
+      options={countryOptions} />
 
       <TextArea
         label="Description" // - Field label for multi-line text input

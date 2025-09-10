@@ -22,6 +22,7 @@ import TabelCrudExample from '../components/TableCrudExample.tsx'; // - Table co
 const CrudExample: React.FC = () => {
   // Form state management
 const {
+  countryOptions,
   formData, // - Current form values (name, category, description)
   categoryOptions, // - Static array of dropdown options for category field
   handleInputChange, // - Function for handling text input and textarea changes
@@ -43,7 +44,8 @@ const {
         {/* Form Section (left column on desktop) */}
         <Col xs={24} lg={8}> {/* - Full width on mobile (xs=24), 1/3 width on large screens (lg=8) */}
           <CreateUpdateCrudExample
-           formData={formData} // - Pass current form values to populate input fields
+           formData={formData}
+           countryOptions={countryOptions} // - Pass current form values to populate input fields
            categoryOptions={categoryOptions} // - Pass dropdown options for category selection
            handleInputChange={handleInputChange} // - Pass input change handler for text fields
            handleSelectChange={handleSelectChange} // - Pass selection handler for dropdown
